@@ -16,9 +16,9 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
   // 
 });
-app.get('/:natural([a-zA-Z]+%?\\d+,?\%?\d+)', function(request,response){
+app.get('/:month([a-zA-Z]+\\s?):day(\\d{2},\\?):year(\\d{4})', function(request,response){
   
-  let date= request.params.natural.toString();
+  let date= request.params.month.toString();
   let natural= new Date(date).toString();
   
   
