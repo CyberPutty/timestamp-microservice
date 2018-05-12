@@ -16,14 +16,18 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
   // 
 });
-
+app.get('/:natural(\)')
 app.get('/:date(\\d+)', function(request,response){
   
   let date= request.params.date.toString();
+  let natural= new Date(date*1000)
+  
+  let data= {"unix" : date, "natural": natural.toDateString()};
+  
   let url= request.url;
   
   
-  response.end();       
+  response.end(JSON.stringify(data));       
          
          })
 // listen for requests :)
