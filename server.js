@@ -17,9 +17,11 @@ app.get("/", function (request, response) {
   // 
 });
 
-app.get(/d+/, function(request,response){
+app.get('/:date(\\d+)', function(request,response){
+  
+  let date= request.params;
         let url= request.url;
-  console.log(url);
+  console.log(date);
   
   response.end(url);       
          
