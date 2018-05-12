@@ -16,7 +16,13 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
   // 
 });
-app.get('/:natural(\)')
+app.get('/:natural(/\\w+\\s+\\d+)', function(request,response){
+  
+  let date= request.params.natural.toString();
+
+  response.end(date);
+  
+})
 app.get('/:date(\\d+)', function(request,response){
   
   let date= request.params.date.toString();
@@ -24,7 +30,6 @@ app.get('/:date(\\d+)', function(request,response){
   
   let data= {"unix" : date, "natural": natural.toDateString()};
   
-  let url= request.url;
   
   
   response.end(JSON.stringify(data));       
