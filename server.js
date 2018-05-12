@@ -16,14 +16,14 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
   // 
 });
-app.get('/:natural(\\w+%\\d{2}\\d+)', function(request,response){
+app.get('/:natural(\\w+%\\d{2},%\\d{4})', function(request,response){
   
   let date= request.params.natural.toString();
   let natural= new Date(date).toString();
   
   
 
-  response.end(natural);
+  response.end(date);
   
 })
 app.get('/:date(\\d+)', function(request,response){
