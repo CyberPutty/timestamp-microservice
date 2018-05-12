@@ -16,12 +16,12 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
   // 
 });
-app.get('/:natural', function(request,response){
+app.get('/:natural([A-Za-z]+%20\\d{2},?%20\\d{4})', function(request,response){
   ///december%20,%2015
   
   let date= request.params.natural.toString();
   
-  //'/:month([A-Za-z]+%?\\d{2},?%?\\d{4})' regex that works
+  //'/:month([A-Za-z]+%\\d{2},?%\\d{4})' regex that works
 
   
   
