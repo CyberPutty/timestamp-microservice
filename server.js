@@ -16,9 +16,9 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
   // 
 });
-app.get('/:month([A-Za-z]+%?):day(%?\\d{2},?%?):year(\\d{4})', function(request,response){
+app.get('/:month([A-Za-z]+%?\\d{2},?%?\\d{4})', function(request,response){
   ///december%20,%2015
-  let date= request.params.month.toString();
+  let date= request.params.day.toString();
   
   //'/:month([A-Za-z]+%?\\d{2},?%?\\d{4})' regex that works
 
