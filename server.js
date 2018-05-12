@@ -19,11 +19,11 @@ app.get("/", function (request, response) {
 
 app.get('/:date(\\d+)', function(request,response){
   
-  let date= request.params;
-        let url= request.url;
-  console.log(date);
+  let date= request.params.date.toString();
+  let url= request.url;
   
-  response.end(url);       
+  
+  response.end();       
          
          })
 // listen for requests :)
