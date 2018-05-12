@@ -17,7 +17,13 @@ app.get("/", function (request, response) {
   // 
 });
 
-
+app.get(/d+/, function(request,response){
+        let url= request.url;
+  console.log(url);
+  
+  response.end(url);       
+         
+         })
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
