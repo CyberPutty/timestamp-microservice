@@ -16,8 +16,8 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
   // 
 });
-app.get('/:month([a-zA-Z]+\\s?):day(\\d{2},\\?):year(\\d{4})', function(request,response){
-  
+app.get('/:month([a-zA-Z]):day(//d{2}(?=,)):year(\\d{4})', function(request,response){
+  ///december%20,%2015
   let date= request.params.month.toString();
   let natural= new Date(date).toString();
   
