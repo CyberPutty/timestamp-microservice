@@ -8,9 +8,12 @@
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 2em;
+  text-align: center;
+
 }
 
 h1 {
+  margin-top: 10vh;
   font-style: italic;
   color: #373fff;
 }
