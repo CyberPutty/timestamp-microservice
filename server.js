@@ -20,9 +20,18 @@ app.get('/:natural', function(request,response){
   ///december%2015,%202015
   
   let date= request.params.natural.toString();
-  let unix= new Date(date).getTime(;
+  let unix;
+  let natural;
+  if(date.match(/^d+/)){
+  unix= date;
+  natural= new Date(date*1000);
+  }
+  else{
+  unix=(new Date(date).getTime()/1000).toString();
+  natural= date;
+  }
   
-  
+  let data= {"unix" : unix, "natural":date};
   
   //'/:month([A-Za-z]+%\\d{2},?%\\d{4})' regex that works
 
@@ -31,13 +40,13 @@ app.get('/:natural', function(request,response){
   
   
 
-  response.end(date);
+  response.end(JSON.stringify(data));
   
 });
 app.get('/:date(\\d+)', function(request,response){
   
   let date= request.params.date.toString();
-  let natural= new Date(date*1000)
+  let natural= new Date(date*1000);
   
   let data= {"unix" : date, "natural": natural.toDateString()};
   
