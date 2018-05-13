@@ -19,7 +19,7 @@ app.get("/", function (request, response) {
 app.get('/:natural', function(request,response){
   ///december%2015,%202015
   
-  let date= request.params.natural.toString();
+  let date= request.params.natural.toString;
   let unix;
   let natural;
   if(date.match(/^\d+/)){
@@ -27,14 +27,13 @@ app.get('/:natural', function(request,response){
   natural= new Date(date*1000).toString();
   }
   else if(!date.match(/^\d+/)){
+    if()
+    
   unix=(new Date(date).getTime()/1000).toString();
   natural= new Date(date).toString();
   }
-  else{
-  unix= null;
-  natural= null;
-  }
-  
+
+ 
   let data= {"unix" : unix, "natural": natural};
   
   //'/:month([A-Za-z]+%\\d{2},?%\\d{4})' regex that works
@@ -45,6 +44,7 @@ app.get('/:natural', function(request,response){
   
 
   response.end(JSON.stringify(data));
+
   
 });
 // app.get('/:date(\\d+)', function(request,response){
