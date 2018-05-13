@@ -19,18 +19,24 @@ app.get("/", function (request, response) {
 app.get('/:natural', function(request,response){
   ///december%2015,%202015
   
-  let date= request.params.natural.toString;
+  let date= request.params.natural.toString();
   let unix;
   let natural;
   if(date.match(/^\d+/)){
   unix= date;
-  natural= new Date(date*1000).toString();
+  natural= new Date(date*1000).toDateString();
   }
   else if(!date.match(/^\d+/)){
-    if()
+    if(new Date(date).toString() !=="Invalid Date"){
+     unix=(new Date(date).getTime()/1000).toString();
+  natural= new Date(date).toDateString();
+    }
+    else{
+    unix= null;
+    natural= null;
+    }
     
-  unix=(new Date(date).getTime()/1000).toString();
-  natural= new Date(date).toString();
+ 
   }
 
  
