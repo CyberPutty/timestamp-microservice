@@ -22,16 +22,20 @@ app.get('/:natural', function(request,response){
   let date= request.params.natural.toString();
   let unix;
   let natural;
-  if(date.match(/^d+/)){
+  if(date.match(/^\d+/)){
   unix= date;
-  natural= new Date(date*1000);
+  natural= new Date(date*1000).toString();
+  }
+  else if(!date.match(/^\d+/)){
+  unix=(new Date(date).getTime()/1000).toString();
+  natural= new Date(date).toString();
   }
   else{
-  unix=(new Date(date).getTime()/1000).toString();
-  natural= date;
+  unix= null;
+  natural= null;
   }
   
-  let data= {"unix" : unix, "natural":date};
+  let data= {"unix" : unix, "natural": natural};
   
   //'/:month([A-Za-z]+%\\d{2},?%\\d{4})' regex that works
 
@@ -43,18 +47,18 @@ app.get('/:natural', function(request,response){
   response.end(JSON.stringify(data));
   
 });
-app.get('/:date(\\d+)', function(request,response){
+// app.get('/:date(\\d+)', function(request,response){
   
-  let date= request.params.date.toString();
-  let natural= new Date(date*1000);
+//   let date= request.params.date.toString();
+//   let natural= new Date(date*1000);
   
-  let data= {"unix" : date, "natural": natural.toDateString()};
+//   let data= {"unix" : date, "natural": natural.toDateString()};
   
   
   
-  response.end(JSON.stringify(data));       
+//   response.end(JSON.stringify(data));       
          
-         })
+//          })
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
